@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estado de los Parques de Madrid</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('IMG_8042.png');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      color: #2C2C2C;
+      min-height: 100vh;
+    }
+
+    @media (min-width: 768px) {
+      body { background-position: center 40%; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      height: 150px;
+    }
+    @media (min-width: 768px) {
+      .hero { height: 280px; }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.40);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      color: white;
+    }
+    .hero-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    @media (min-width: 600px) {
+      .hero-title { font-size: 2.1rem; }
+    }
+    .hero-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-bottom: 1.25rem;
+    }
+    .lang-toggle {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .lang-btn {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .lang-btn.active {
+      background: rgba(255,255,255,0.32);
+      border-color: rgba(255,255,255,0.65);
+      font-weight: 600;
+    }
+    .lang-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ── Layout ── */
+    .main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .last-updated {
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.1rem;
+    }
+
+    /* ── Park card ── */
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .park-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid #F0EDE8;
+    }
+    .park-row:last-child { border-bottom: none; }
+    .park-row.status-2 { background: rgba(55, 138, 221, 0.06); }
+    .park-row.status-3 { background: rgba(186, 117, 23, 0.07); }
+    .park-row.status-4 { background: rgba(232, 160, 32, 0.08); }
+    .park-row.status-5 { background: rgba(226, 75, 74, 0.08); }
+    .park-row.status-6 { background: rgba(136, 135, 128, 0.08); }
+
+    .status-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .park-info { flex: 1; min-width: 0; }
+    .park-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1C1C1E;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .park-status-label {
+      font-size: 0.77rem;
+      color: #777;
+      margin-top: 0.1rem;
+    }
+    .time-badge {
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      color: white;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── Error / Loading ── */
+    .empty-state {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: #999;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .empty-state .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.65rem;
+    }
+
+    /* ── Legend ── */
+    .legend { margin-bottom: 1.5rem; }
+    .legend-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .legend-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: white;
+      transition: opacity 0.2s;
+    }
+    .legend-pill.dimmed { opacity: 0.28; }
+    .legend-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.65);
+      flex-shrink: 0;
+    }
+
+    /* ── Channel buttons ── */
+    .channels-section { margin-bottom: 1.5rem; }
+    .channels {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-top: 0.65rem;
+    }
+    .channel-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.85rem 1.1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      transition: filter 0.15s;
+    }
+    .channel-btn:hover { filter: brightness(1.1); }
+    .channel-btn.telegram { background: #229ED9; }
+    .channel-btn.twitter  { background: #111; }
+    .channel-icon { font-size: 1.25rem; flex-shrink: 0; }
+    .channel-name { font-weight: 700; font-size: 0.88rem; }
+    .channel-desc { font-size: 0.76rem; opacity: 0.82; margin-top: 0.1rem; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.45);
+      padding-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-title">🌳 <span data-i18n="title"></span> 🌳</div>
+    <div class="hero-subtitle" data-i18n="subtitle"></div>
+    <div class="lang-toggle">
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="last-updated" id="last-updated"></div>
+
+  <!-- Parks -->
+  <div class="card" id="park-card">
+    <div class="empty-state" id="loading-state">
+      <div class="icon">⏳</div>
+      <div data-i18n="loading"></div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="section-label" data-i18n="legend_title"></div>
+    <div class="legend-pills" id="legend-pills"></div>
+  </div>
+
+  <!-- Channels -->
+  <div class="channels-section">
+    <div class="section-label" data-i18n="channels_title"></div>
+    <div class="channels">
+      <a href="https://t.me/Parques_Madrid_bot" class="channel-btn telegram" target="_blank" rel="noopener">
+        <span class="channel-icon">✈️</span>
+        <div>
+          <div class="channel-name">Telegram — @Parques_Madrid_bot</div>
+          <div class="channel-desc" data-i18n="telegram_desc"></div>
+        </div>
+      </a>
+      <a href="https://x.com/InfoParquesMad" class="channel-btn twitter" target="_blank" rel="noopener">
+        <span class="channel-icon">𝕏</span>
+        <div>
+          <div class="channel-name">X / Twitter — @InfoParquesMad</div>
+          <div class="channel-desc" data-i18n="twitter_desc"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <footer data-i18n="footer"></footer>
+
+</main>
+
+<script>
+const DATA_URL = 'https://raw.githubusercontent.com/juanboca/Parques_Madrid_Page/main/park_status.json';
+
+const STATUS_COLOR = {
+  1: '#1D9E75',
+  2: '#378ADD',
+  3: '#BA7517',
+  4: '#E8A020',
+  5: '#E24B4A',
+  6: '#888780',
+};
+
+// Worst first
+const STATUS_PRIORITY = { 6: 0, 5: 1, 4: 2, 3: 3, 2: 4, 1: 5 };
+
+const I18N = {
+  es: {
+    title: 'Estado de los Parques de Madrid',
+    subtitle: 'Alertas meteorológicas y cierres en tiempo real',
+    loading: 'Cargando estado de los parques…',
+    error: 'No se pudo cargar el estado de los parques.\nInténtalo de nuevo más tarde.',
+    last_updated: 'Actualizado: ',
+    legend_title: 'Leyenda',
+    channels_title: 'Recibe alertas',
+    telegram_desc: 'Personaliza qué parques te interesan',
+    twitter_desc: 'Usa #EstadoParquesMadrid para filtrar',
+    footer: 'Datos oficiales del Ayuntamiento de Madrid',
+    statuses: {
+      1: 'Abierto según horario habitual',
+      2: 'Con incidencias que afectan al uso',
+      3: 'Alerta amarilla — restricciones en zonas infantiles y deportivas',
+      4: 'Alerta naranja — restricciones + eventos suspendidos',
+      5: 'Alerta roja — cierre previsto',
+      6: 'Cerrado',
+    },
+    status_short: {
+      1: 'Abierto',
+      2: 'Con restricciones',
+      3: 'Alerta amarilla',
+      4: 'Alerta naranja',
+      5: 'Alerta roja',
+      6: 'Cerrado',
+    },
+  },
+  en: {
+    title: 'Madrid Parks Status',
+    subtitle: 'Weather alerts and closures in real time',
+    loading: 'Loading park status…',
+    error: 'Could not load park status.\nPlease try again later.',
+    last_updated: 'Updated: ',
+    legend_title: 'Legend',
+    channels_title: 'Get alerts',
+    telegram_desc: 'Choose which parks to follow',
+    twitter_desc: 'Use #EstadoParquesMadrid to filter',
+    footer: 'Official data from the Madrid City Council',
+    statuses: {
+      1: 'Open — normal hours',
+      2: 'Open with restrictions',
+      3: 'Yellow alert — children\'s and sports areas restricted',
+      4: 'Orange alert — restrictions + outdoor events suspended',
+      5: 'Red alert — closure expected',
+      6: 'Closed',
+    },
+    status_short: {
+      1: 'Open',
+      2: 'Restricted',
+      3: 'Yellow alert',
+      4: 'Orange alert',
+      5: 'Red alert',
+      6: 'Closed',
+    },
+  },
+};
+
+let currentLang = 'es';
+let parkData = null;
+
+function detectLang() {
+  const nav = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+  return nav.startsWith('en') ? 'en' : 'es';
+}
+
+function t(key) {
+  return I18N[currentLang][key] ?? I18N['es'][key] ?? key;
+}
+
+function renderLegend(activeCodes = null) {
+  const lang = I18N[currentLang];
+  const pills = document.getElementById('legend-pills');
+  pills.innerHTML = [1, 2, 3, 4, 5, 6].map(s => {
+    const color = STATUS_COLOR[s];
+    const label = lang.statuses[s] || String(s);
+    const dimmed = activeCodes !== null && !activeCodes.has(s) ? ' dimmed' : '';
+    return `<div class="legend-pill${dimmed}" style="background:${color}">
+      <div class="legend-dot"></div>${label}
+    </div>`;
+  }).join('');
+}
+
+function applyI18n() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = t(key);
+  });
+  document.getElementById('btn-es').classList.toggle('active', currentLang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', currentLang === 'en');
+  document.documentElement.lang = currentLang;
+  const activeCodes = parkData
+    ? new Set(Object.values(parkData).map(d => Number(d.status)))
+    : null;
+  renderLegend(activeCodes);
+  if (parkData) renderParks(parkData);
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  applyI18n();
+}
+
+function renderParks(data) {
+  const card = document.getElementById('park-card');
+  const lang = I18N[currentLang];
+
+  const entries = Object.entries(data).sort((a, b) => {
+    const pa = STATUS_PRIORITY[a[1].status] ?? 99;
+    const pb = STATUS_PRIORITY[b[1].status] ?? 99;
+    return pa - pb;
+  });
+
+  const activeCodes = new Set(entries.map(([, d]) => Number(d.status)));
+
+  card.innerHTML = entries.map(([name, d]) => {
+    const s = Number(d.status);
+    const color = STATUS_COLOR[s] || '#999';
+    const label = lang.statuses[s] || String(s);
+    const badge = d.horario
+      ? `<span class="time-badge" style="background:${color}">${d.horario}</span>`
+      : '';
+    return `
+      <div class="park-row status-${s}">
+        <div class="status-dot" style="background:${color}"></div>
+        <div class="park-info">
+          <div class="park-name">${name}</div>
+          <div class="park-status-label">${label}</div>
+        </div>
+        ${badge}
+      </div>`;
+  }).join('');
+
+  renderLegend(activeCodes);
+}
+
+function showError() {
+  const card = document.getElementById('park-card');
+  card.innerHTML = `
+    <div class="empty-state">
+      <div class="icon">⚠️</div>
+      <div>${t('error')}</div>
+    </div>`;
+}
+
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    parkData = data;
+
+    const fechas = Object.values(data).map(d => d.fecha).filter(Boolean);
+    if (fechas.length) {
+      document.getElementById('last-updated').textContent = t('last_updated') + fechas[0];
+    }
+
+    renderParks(data);
+    // Re-apply i18n to refresh legend labels in current language
+    const pills = document.getElementById('legend-pills');
+    if (pills.innerHTML) applyI18n();
+  } catch (e) {
+    console.error('Failed to load park data:', e);
+    showError();
+  }
+}
+
+// Init
+currentLang = detectLang();
+applyI18n();
+loadData();
+</script>
+
+</body>
+</html>

@@ -9,104 +9,164 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('IMG_8042.png');
+      background-image: linear-gradient(rgba(0,0,0,0.52), rgba(10,30,15,0.65)), url('IMG_8042.png');
       background-size: cover;
-      background-position: center center;
+      background-position: center 40%;
       background-attachment: fixed;
       color: #2C2C2C;
       min-height: 100vh;
     }
 
-    @media (min-width: 768px) {
-      body { background-position: center 40%; }
-    }
-
     /* ── Hero ── */
     .hero {
-      position: relative;
-      height: 150px;
-    }
-    @media (min-width: 768px) {
-      .hero { height: 280px; }
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.40);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      height: 100%;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      color: white;
+      min-height: 320px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
-      text-align: center;
-      color: white;
+    }
+    @media (min-width: 600px) { .hero { min-height: 420px; } }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(29,158,117,0.35);
+      border: 1px solid rgba(29,158,117,0.6);
+      color: #7EFFD4;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
     }
     .hero-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font-size: 1.8rem;
+      font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 0.4rem;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
     }
-    @media (min-width: 600px) {
-      .hero-title { font-size: 2.1rem; }
-    }
+    @media (min-width: 600px) { .hero-title { font-size: 2.4rem; } }
     .hero-subtitle {
       font-size: 0.9rem;
-      opacity: 0.75;
-      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.75rem;
+      max-width: 420px;
+      line-height: 1.5;
     }
-    .lang-toggle {
-      display: flex;
-      gap: 0.5rem;
-    }
+    .lang-toggle { display: flex; gap: 0.5rem; justify-content: center; }
     .lang-btn {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
       color: white;
       padding: 0.3rem 0.9rem;
       border-radius: 999px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       cursor: pointer;
       transition: background 0.15s;
     }
     .lang-btn.active {
-      background: rgba(255,255,255,0.32);
-      border-color: rgba(255,255,255,0.65);
-      font-weight: 600;
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.6);
+      font-weight: 700;
     }
-    .lang-btn:hover:not(.active) {
-      background: rgba(255,255,255,0.2);
-    }
+    .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.18); }
 
-    /* ── Layout ── */
+    /* ── Explainer strip ── */
+    .explainer {
+      background: rgba(29,158,117,0.18);
+      border-top: 1px solid rgba(29,158,117,0.3);
+      border-bottom: 1px solid rgba(29,158,117,0.3);
+      padding: 0.9rem 1.5rem;
+      text-align: center;
+    }
+    .explainer-text {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.55;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .explainer-text strong { color: #7EFFD4; font-weight: 700; }
+
+    /* ── Main layout ── */
     .main {
       max-width: 680px;
       margin: 0 auto;
       padding: 1.5rem 1rem 3rem;
     }
 
+    /* ── Benefits ── */
+    .benefits {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .benefit {
+      flex: 1;
+      min-width: 120px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 10px;
+      padding: 0.75rem 0.8rem;
+      text-align: center;
+      color: white;
+    }
+    .benefit-icon { font-size: 1.3rem; display: block; margin-bottom: 0.3rem; }
+    .benefit-label { font-size: 0.8rem; font-weight: 700; }
+    .benefit-sub { font-size: 0.69rem; opacity: 0.75; margin-top: 0.1rem; }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── Channels ── */
+    .channels-section { margin-bottom: 1.5rem; }
+    .channels { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 0.6rem; }
+    .channel-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      transition: filter 0.15s;
+    }
+    .channel-btn:hover { filter: brightness(1.1); }
+    .channel-btn.telegram { background: #229ED9; }
+    .channel-btn.twitter  { background: #111; }
+    .channel-icon { font-size: 1.25rem; flex-shrink: 0; }
+    .channel-name { font-weight: 700; font-size: 0.88rem; }
+    .channel-desc { font-size: 0.75rem; opacity: 0.82; margin-top: 0.1rem; }
+
+    /* ── Last updated ── */
     .last-updated {
       text-align: center;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 1.1rem;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1rem;
     }
 
     /* ── Park card ── */
     .card {
       background: white;
       border-radius: 12px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
       overflow: hidden;
       margin-bottom: 1.5rem;
     }
-
     .park-row {
       display: flex;
       align-items: center;
@@ -115,18 +175,13 @@
       border-bottom: 1px solid #F0EDE8;
     }
     .park-row:last-child { border-bottom: none; }
-    .park-row.status-2 { background: rgba(55, 138, 221, 0.06); }
-    .park-row.status-3 { background: rgba(186, 117, 23, 0.07); }
-    .park-row.status-4 { background: rgba(232, 160, 32, 0.08); }
-    .park-row.status-5 { background: rgba(226, 75, 74, 0.08); }
-    .park-row.status-6 { background: rgba(136, 135, 128, 0.08); }
+    .park-row.status-2 { background: rgba(55,138,221,0.06); }
+    .park-row.status-3 { background: rgba(186,117,23,0.07); }
+    .park-row.status-4 { background: rgba(232,160,32,0.08); }
+    .park-row.status-5 { background: rgba(226,75,74,0.08); }
+    .park-row.status-6 { background: rgba(136,135,128,0.08); }
 
-    .status-dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+    .status-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
     .park-info { flex: 1; min-width: 0; }
     .park-name {
       font-size: 0.9rem;
@@ -136,11 +191,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .park-status-label {
-      font-size: 0.77rem;
-      color: #777;
-      margin-top: 0.1rem;
-    }
+    .park-status-label { font-size: 0.77rem; color: #777; margin-top: 0.1rem; }
     .time-badge {
       font-size: 0.7rem;
       font-weight: 500;
@@ -161,23 +212,9 @@
     }
     .empty-state .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
 
-    /* ── Section label ── */
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 0.65rem;
-    }
-
     /* ── Legend ── */
     .legend { margin-bottom: 1.5rem; }
-    .legend-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
+    .legend-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .legend-pill {
       display: flex;
       align-items: center;
@@ -190,38 +227,7 @@
       transition: opacity 0.2s;
     }
     .legend-pill.dimmed { opacity: 0.28; }
-    .legend-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.65);
-      flex-shrink: 0;
-    }
-
-    /* ── Channel buttons ── */
-    .channels-section { margin-bottom: 1.5rem; }
-    .channels {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      margin-top: 0.65rem;
-    }
-    .channel-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      padding: 0.85rem 1.1rem;
-      border-radius: 10px;
-      text-decoration: none;
-      color: white;
-      transition: filter 0.15s;
-    }
-    .channel-btn:hover { filter: brightness(1.1); }
-    .channel-btn.telegram { background: #229ED9; }
-    .channel-btn.twitter  { background: #111; }
-    .channel-icon { font-size: 1.25rem; flex-shrink: 0; }
-    .channel-name { font-weight: 700; font-size: 0.88rem; }
-    .channel-desc { font-size: 0.76rem; opacity: 0.82; margin-top: 0.1rem; }
+    .legend-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.65); flex-shrink: 0; }
 
     /* ── Footer ── */
     footer {
@@ -235,33 +241,38 @@
 <body>
 
 <header class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-title">🌳 <span data-i18n="title"></span> 🌳</div>
-    <div class="hero-subtitle" data-i18n="subtitle"></div>
-    <div class="lang-toggle">
-      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
-      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-    </div>
+  <div class="hero-tag" data-i18n="eyebrow"></div>
+  <div class="hero-title" data-i18n="title"></div>
+  <div class="hero-subtitle" data-i18n="subtitle"></div>
+  <div class="lang-toggle">
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
   </div>
 </header>
 
+<div class="explainer">
+  <div class="explainer-text" data-i18n="explainer"></div>
+</div>
+
 <main class="main">
 
-  <div class="last-updated" id="last-updated"></div>
-
-  <!-- Parks -->
-  <div class="card" id="park-card">
-    <div class="empty-state" id="loading-state">
-      <div class="icon">⏳</div>
-      <div data-i18n="loading"></div>
+  <!-- Benefits -->
+  <div class="benefits">
+    <div class="benefit">
+      <span class="benefit-icon">🆓</span>
+      <div class="benefit-label" data-i18n="benefit_free_title"></div>
+      <div class="benefit-sub" data-i18n="benefit_free_sub"></div>
     </div>
-  </div>
-
-  <!-- Legend -->
-  <div class="legend">
-    <div class="section-label" data-i18n="legend_title"></div>
-    <div class="legend-pills" id="legend-pills"></div>
+    <div class="benefit">
+      <span class="benefit-icon">📍</span>
+      <div class="benefit-label" data-i18n="benefit_custom_title"></div>
+      <div class="benefit-sub" data-i18n="benefit_custom_sub"></div>
+    </div>
+    <div class="benefit">
+      <span class="benefit-icon">⚡</span>
+      <div class="benefit-label" data-i18n="benefit_alerts_title"></div>
+      <div class="benefit-sub" data-i18n="benefit_alerts_sub"></div>
+    </div>
   </div>
 
   <!-- Channels -->
@@ -285,6 +296,23 @@
     </div>
   </div>
 
+  <!-- Parks -->
+  <div class="last-updated" id="last-updated"></div>
+
+  <div class="section-label" data-i18n="status_title"></div>
+  <div class="card" id="park-card">
+    <div class="empty-state" id="loading-state">
+      <div class="icon">⏳</div>
+      <div data-i18n="loading"></div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="section-label" data-i18n="legend_title"></div>
+    <div class="legend-pills" id="legend-pills"></div>
+  </div>
+
   <footer data-i18n="footer"></footer>
 
 </main>
@@ -301,20 +329,28 @@ const STATUS_COLOR = {
   6: '#888780',
 };
 
-// Worst first
 const STATUS_PRIORITY = { 6: 0, 5: 1, 4: 2, 3: 3, 2: 4, 1: 5 };
 
 const I18N = {
   es: {
-    title: 'Estado de los Parques de Madrid',
-    subtitle: 'Alertas meteorológicas y cierres en tiempo real',
+    eyebrow: '9 parques históricos de Madrid',
+    title: 'El parque estaba cerrado. Nadie te avisó. Hasta ahora.',
+    subtitle: 'Estado en tiempo real. Alertas a tu móvil cuando cambia algo.',
+    explainer: '🧒 No solo si está cerrado. También te avisamos cuando los juegos infantiles o las zonas deportivas están restringidos por alerta meteorológica — para que sepas antes de salir de casa.',
+    benefit_free_title: 'Gratuito',
+    benefit_free_sub: 'Siempre',
+    benefit_custom_title: 'Solo tus parques',
+    benefit_custom_sub: 'Tú eliges cuáles',
+    benefit_alerts_title: 'Alertas al instante',
+    benefit_alerts_sub: 'Cuando cambia el estado',
+    channels_title: 'Recibe alertas',
+    telegram_desc: 'Elige qué parques seguir. Aviso inmediato cuando cambia el estado.',
+    twitter_desc: 'Usa #EstadoParquesMadrid para filtrar alertas en tu timeline.',
+    status_title: 'Estado actual',
     loading: 'Cargando estado de los parques…',
     error: 'No se pudo cargar el estado de los parques.\nInténtalo de nuevo más tarde.',
     last_updated: 'Actualizado: ',
     legend_title: 'Leyenda',
-    channels_title: 'Recibe alertas',
-    telegram_desc: 'Personaliza qué parques te interesan',
-    twitter_desc: 'Usa #EstadoParquesMadrid para filtrar',
     footer: 'Datos oficiales del Ayuntamiento de Madrid',
     statuses: {
       1: 'Abierto según horario habitual',
@@ -334,15 +370,24 @@ const I18N = {
     },
   },
   en: {
-    title: 'Madrid Parks Status',
-    subtitle: 'Weather alerts and closures in real time',
+    eyebrow: '9 historic parks in Madrid',
+    title: 'The park was closed. Nobody told you. Until now.',
+    subtitle: 'Real-time status. Alerts to your phone when something changes.',
+    explainer: '🧒 Not just when it\'s closed. We also alert you when children\'s play areas or sports zones are restricted due to weather alerts — so you know before leaving home.',
+    benefit_free_title: 'Free',
+    benefit_free_sub: 'Always',
+    benefit_custom_title: 'Your parks only',
+    benefit_custom_sub: 'You choose which ones',
+    benefit_alerts_title: 'Instant alerts',
+    benefit_alerts_sub: 'When status changes',
+    channels_title: 'Get alerts',
+    telegram_desc: 'Choose which parks to follow. Instant alert when status changes.',
+    twitter_desc: 'Use #EstadoParquesMadrid to filter alerts in your timeline.',
+    status_title: 'Current status',
     loading: 'Loading park status…',
     error: 'Could not load park status.\nPlease try again later.',
     last_updated: 'Updated: ',
     legend_title: 'Legend',
-    channels_title: 'Get alerts',
-    telegram_desc: 'Choose which parks to follow',
-    twitter_desc: 'Use #EstadoParquesMadrid to filter',
     footer: 'Official data from the Madrid City Council',
     statuses: {
       1: 'Open — normal hours',

@@ -1,56 +1,56 @@
 {
   "Jardines del Buen Retiro": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   },
   "Parque Juan Pablo II": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   },
   "Parque Quinta de los Molinos": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   },
   "Parque Quinta de Torre Arias": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   },
   "Parque Juan Carlos I": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   },
   "Jardín del Capricho de la Alameda de Osuna": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   },
   "Rosaleda del Parque del Oeste": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   },
   "Parque Quinta Fuente del Berro": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   },
   "Parque Lineal del Manzanares": {
-    "status": 4,
-    "fecha": "20/06/2026",
-    "horario": "15:00 a 24:00 Horas",
+    "status": 1,
+    "fecha": "21/06/2026",
+    "horario": "03:00 a 12:00 Horas",
     "observaciones": null
   }
 }

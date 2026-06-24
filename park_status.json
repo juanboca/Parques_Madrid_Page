@@ -6,7 +6,7 @@
     "observaciones": null
   },
   "Parque Juan Pablo II": {
-    "status": 3,
+    "status": 1,
     "fecha": "24/06/2026",
     "horario": "12:00 a 24:00 Horas",
     "observaciones": null
@@ -24,7 +24,7 @@
     "observaciones": null
   },
   "Parque Juan Carlos I": {
-    "status": 3,
+    "status": 1,
     "fecha": "24/06/2026",
     "horario": "12:00 a 24:00 Horas",
     "observaciones": null
@@ -48,7 +48,7 @@
     "observaciones": null
   },
   "Parque Lineal del Manzanares": {
-    "status": 3,
+    "status": 1,
     "fecha": "24/06/2026",
     "horario": "12:00 a 24:00 Horas",
     "observaciones": null

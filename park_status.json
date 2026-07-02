@@ -7,8 +7,8 @@
   },
   "Parque Juan Pablo II": {
     "status": 1,
-    "fecha": "01/07/2026",
-    "horario": "12:00 a 18:00",
+    "fecha": "02/07/2026",
+    "horario": null,
     "observaciones": null
   },
   "Parque Quinta de los Molinos": {
@@ -25,8 +25,8 @@
   },
   "Parque Juan Carlos I": {
     "status": 1,
-    "fecha": "01/07/2026",
-    "horario": "18:00 a 21:00",
+    "fecha": "02/07/2026",
+    "horario": null,
     "observaciones": null
   },
   "Jardín del Capricho de la Alameda de Osuna": {
@@ -49,8 +49,8 @@
   },
   "Parque Lineal del Manzanares": {
     "status": 1,
-    "fecha": "01/07/2026",
-    "horario": "12:00 a 18:00",
+    "fecha": "02/07/2026",
+    "horario": null,
     "observaciones": null
   }
 }

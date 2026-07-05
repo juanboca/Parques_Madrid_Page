@@ -1,8 +1,8 @@
 {
   "Jardines del Buen Retiro": {
-    "status": 1,
+    "status": 3,
     "fecha": "05/07/2026",
-    "horario": "De 06:00 h a 18:00 h",
+    "horario": "De 18:00 h a 21:00 h",
     "observaciones": null
   },
   "Parque Juan Pablo II": {
@@ -42,9 +42,9 @@
     "observaciones": null
   },
   "Parque Quinta Fuente del Berro": {
-    "status": 1,
+    "status": 3,
     "fecha": "05/07/2026",
-    "horario": "De 06:00 h a 18:00 h",
+    "horario": "De 18:00 h a 21:00 h",
     "observaciones": null
   },
   "Parque Lineal del Manzanares": {

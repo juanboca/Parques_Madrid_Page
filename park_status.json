@@ -2,7 +2,7 @@
   "Jardines del Buen Retiro": {
     "status": 3,
     "fecha": "09/07/2026",
-    "horario": "De 12:00 a 24:00 Horas",
+    "horario": "De 12:00 a 21:00 Horas",
     "observaciones": null
   },
   "Parque Juan Pablo II": {
@@ -14,13 +14,13 @@
   "Parque Quinta de los Molinos": {
     "status": 3,
     "fecha": "09/07/2026",
-    "horario": "De 12:00 a 24:00 Horas",
+    "horario": "De 12:00 a 21:00 Horas",
     "observaciones": null
   },
   "Parque Quinta de Torre Arias": {
     "status": 3,
     "fecha": "09/07/2026",
-    "horario": "De 12:00 a 24:00 Horas",
+    "horario": "De 12:00 a 21:00 Horas",
     "observaciones": null
   },
   "Parque Juan Carlos I": {
@@ -38,13 +38,13 @@
   "Rosaleda del Parque del Oeste": {
     "status": 3,
     "fecha": "09/07/2026",
-    "horario": "De 12:00 a 24:00 Horas",
+    "horario": "De 12:00 a 21:00 Horas",
     "observaciones": null
   },
   "Parque Quinta Fuente del Berro": {
     "status": 3,
     "fecha": "09/07/2026",
-    "horario": "De 12:00 a 24:00 Horas",
+    "horario": "De 12:00 a 21:00 Horas",
     "observaciones": null
   },
   "Parque Lineal del Manzanares": {

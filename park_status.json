@@ -1,55 +1,55 @@
 {
   "Jardines del Buen Retiro": {
-    "status": 1,
-    "fecha": "02/09/2026",
-    "horario": null,
+    "status": 3,
+    "fecha": "03/09/2026",
+    "horario": "12:00 A 18:00",
     "observaciones": null
   },
   "Parque Juan Pablo II": {
     "status": 1,
-    "fecha": "02/09/2026",
+    "fecha": "03/09/2026",
     "horario": null,
     "observaciones": null
   },
   "Parque Quinta de los Molinos": {
-    "status": 1,
-    "fecha": "02/09/2026",
-    "horario": null,
+    "status": 3,
+    "fecha": "03/09/2026",
+    "horario": "12:00 A 18:00",
     "observaciones": null
   },
   "Parque Quinta de Torre Arias": {
-    "status": 1,
-    "fecha": "02/09/2026",
-    "horario": null,
+    "status": 3,
+    "fecha": "03/09/2026",
+    "horario": "12:00 A 18:00",
     "observaciones": null
   },
   "Parque Juan Carlos I": {
     "status": 1,
-    "fecha": "02/09/2026",
+    "fecha": "03/09/2026",
     "horario": null,
     "observaciones": null
   },
   "Jardín del Capricho de la Alameda de Osuna": {
-    "status": 1,
-    "fecha": "02/09/2026",
-    "horario": null,
+    "status": 3,
+    "fecha": "03/09/2026",
+    "horario": "12:00 A 18:00",
     "observaciones": null
   },
   "Rosaleda del Parque del Oeste": {
-    "status": 1,
-    "fecha": "02/09/2026",
-    "horario": null,
+    "status": 3,
+    "fecha": "03/09/2026",
+    "horario": "12:00 A 18:00",
     "observaciones": null
   },
   "Parque Quinta Fuente del Berro": {
-    "status": 1,
-    "fecha": "02/09/2026",
-    "horario": null,
+    "status": 3,
+    "fecha": "03/09/2026",
+    "horario": "12:00 A 18:00",
     "observaciones": null
   },
   "Parque Lineal del Manzanares": {
     "status": 1,
-    "fecha": "02/09/2026",
+    "fecha": "03/09/2026",
     "horario": null,
     "observaciones": null
   }

@@ -6,7 +6,7 @@
     "observaciones": null
   },
   "Parque Juan Pablo II": {
-    "status": 2,
+    "status": 1,
     "fecha": "17/10/2026",
     "horario": null,
     "observaciones": null
@@ -24,7 +24,7 @@
     "observaciones": null
   },
   "Parque Juan Carlos I": {
-    "status": 2,
+    "status": 1,
     "fecha": "17/10/2026",
     "horario": null,
     "observaciones": null
@@ -48,7 +48,7 @@
     "observaciones": null
   },
   "Parque Lineal del Manzanares": {
-    "status": 2,
+    "status": 1,
     "fecha": "17/10/2026",
     "horario": null,
     "observaciones": null
